@@ -1,0 +1,45 @@
+{
+  // Enables auto-fixing ESLint errors on save
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  },
+
+  "prettier.ignorePath": ".gitignore", // Don't run prettier for files listed in .gitignore
+
+  // Ensures the ESLint plugin is used for files it's relevant to
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+
+  // Configures the default formatter to Prettier for JavaScript and TypeScript files
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.requireConfig": true,
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": true
+  },
+
+  // Disables VS Code's built-in formatter to avoid conflicts with Prettier
+  "javascript.format.enable": false,
+  "typescript.format.enable": false,
+
+  // Optional: Configures settings for working with JSX
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "javascript.suggest.autoImports": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
+  // Optional: Adjusts the complexity at which VS Code will warn you about computation in the editor
+  "editor.largeFileOptimizations": false,
+
+  // If using TypeScript, these settings can be helpful
+  "typescript.suggest.autoImports": true,
+  "typescript.updateImportsOnFileMove.enabled": "always"
+}
