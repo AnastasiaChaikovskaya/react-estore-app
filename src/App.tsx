@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.scss';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { PUBLIC_ROUTS } from './contstants/routs';
-import MainLayout from './modules/shared/MainLayout';
-import { AccessoriesPage, HomePage, PhonesPage, TabletsPage } from './pages/main';
+import { PUBLIC_ROUTS } from '@/contstants/routs';
+import MainLayout from '@/modules/shared/MainLayout';
+import { AccessoriesPage, HomePage, PhonesPage, TabletsPage } from '@/pages/main';
 
 const routs = createBrowserRouter([
   {

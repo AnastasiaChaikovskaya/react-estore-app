@@ -1,39 +1,26 @@
 module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
-  },
-  parser: '@typescript-eslint/parser',
+  root: true,
+  env: { browser: true, es2020: true },
   extends: [
     'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:jsx-a11y/recommended',
-    'plugin:react-hooks/recommended',
-    'plugin:import/errors',
-    'plugin:import/warnings',
     'plugin:@typescript-eslint/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:react/recommended',
+    'plugin:markdown/recommended',
   ],
   parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 'latest',
+    ecmaFeatures: { jsx: true },
+    ecmaVersion: 2020,
     sourceType: 'module',
   },
-  plugins: ['react', 'jsx-a11y', 'react-hooks', 'import', '@typescript-eslint'],
-  rules: {
-    // You can add custom rules or override existing ones here
-  },
   settings: {
-    react: {
-      version: 'detect', // Automatically detect the React version
-    },
-    'import/resolver': {
-      alias: {
-        map: [['@', './src']],
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      },
-    },
+    react: { version: 'detect' },
+    'import/resolver': { node: { extensions: ['.js', '.ts', '.tsx'] } },
+  },
+  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  parser: '@typescript-eslint/parser',
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
   },
 };
