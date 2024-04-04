@@ -1,0 +1,30 @@
+@mixin on-tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin on-phone {
+  @media (min-width: $phone-min-width) {
+    @content;
+  }
+}
+
+@mixin content-pudding-inline {
+  padding-inline: 24px;
+
+  @include on-tablet {
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+}
+
+.container {
+  @include content-pudding-inline;
+}

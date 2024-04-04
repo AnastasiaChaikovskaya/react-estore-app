@@ -1,0 +1,13 @@
+body {
+  overflow-x: hidden;
+  font-family: Montserrat, sans-serif;
+  min-width: 320px;
+}
+
+.main {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    column-gap: 56px;
+  }
+}
