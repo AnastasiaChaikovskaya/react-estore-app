@@ -21,3 +21,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# User-specific files
+tsconfig.tsbuildinfo
