@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import '@/components/SelectorComponent/SelectorComponent.scss';
 import IconComponent from '../IconComponent';
 
@@ -14,6 +14,8 @@ const SelectorComponent: FC<Props> = ({ placeholder, items, width }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<TItem | null>(null);
 
+  const selectorRef = useRef<HTMLDivElement>(null);
+
   const handleOpenSelector = () => {
     setIsOpen(!isOpen);
   };
@@ -22,6 +24,22 @@ const SelectorComponent: FC<Props> = ({ placeholder, items, width }) => {
     setSelectedOption(item);
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    const handleDocumentClick = (event: MouseEvent) => {
+      if (selectorRef.current && !selectorRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleDocumentClick);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleDocumentClick);
+    };
+  }, [isOpen]);
 
   return (
     <div className="selector" style={{ width: width }}>
@@ -42,7 +60,7 @@ const SelectorComponent: FC<Props> = ({ placeholder, items, width }) => {
       </button>
 
       {isOpen && (
-        <div className="selector__menu">
+        <div className="selector__menu" ref={selectorRef}>
           {items.map((item, index) => (
             <div className="selector__item" key={index} onClick={() => handleSelectOption(item)}>
               {item}
