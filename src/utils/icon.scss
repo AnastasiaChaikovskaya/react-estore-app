@@ -1,13 +1,11 @@
 .icon {
-  height: 8.5px;
-  width: 14px;
   display: block;
+  width: 14px;
+  height: 8.5px;
   background-repeat: no-repeat;
   background-size: cover;
 
   &--menu {
-    background-image: url(../image/icons/icon-menu.svg);
-
     @include on-desktop {
       display: none;
     }

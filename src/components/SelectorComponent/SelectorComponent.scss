@@ -3,23 +3,23 @@
 .selector {
   display: flex;
   flex-direction: column;
-  width: 136px;
   gap: 2px;
+  width: 136px;
 
   &__name {
-    font-weight: 600;
     font-size: 12px;
+    font-weight: 600;
     line-height: 15.34px;
     color: $main-nonactive-page;
   }
 
   &__button {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    font-family: Montserrat, sans-serif;
+    justify-content: space-between;
     padding: 10px 12px;
-    background-color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ffffff;
     border: #b4bdc3 1px solid;
     cursor: pointer;
 
@@ -33,10 +33,10 @@
   }
 
   &__placeholder {
-    color: $main-color-text;
-    font-weight: 600;
     font-size: 14px;
+    font-weight: 600;
     line-height: 21px;
+    color: $main-color-text;
   }
 
   &__menu {
@@ -48,10 +48,10 @@
 
   &__item {
     padding: 6px 12px;
-    color: #89939a;
-    font-weight: 500;
     font-size: 14px;
+    font-weight: 500;
     line-height: 21px;
+    color: #89939a;
     cursor: pointer;
 
     &:hover {
