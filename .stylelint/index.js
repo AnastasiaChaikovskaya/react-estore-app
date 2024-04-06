@@ -9,7 +9,6 @@ export default {
   ...bemRules,
   ...generalRules,
   ...orderRules,
-  ...scssRules,
   ...prettierRules,
   ...pluginsRules,
 };

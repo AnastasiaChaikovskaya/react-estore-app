@@ -4,3 +4,15 @@ $phone-min-width: 320px;
 $effect-duration: 0.3s;
 $main-color-text: #313237;
 $main-nonactive-page: #89939a;
+
+main::after {
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: $main-color-text;
+  content: '';
+  transform: translateX(-50%);
+}

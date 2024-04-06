@@ -9,9 +9,4 @@ export default {
    * @see https://github.com/kristerkari/stylelint-declaration-block-no-ignored-properties
    */
   'plugin/declaration-block-no-ignored-properties': true,
-  /**
-   * Disallow empty selector in a css rule.
-   * @see https://github.com/ssivanatarajan/stylelint-selector-no-empty
-   */
-  'plugin/stylelint-selector-no-empty': true,
 };
