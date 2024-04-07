@@ -9,15 +9,17 @@ export const Header = () => {
       <div className="container">
         <header className="header">
           <div className="header__top-bar">
-            <a href="h">
-              <HeaderLogo color="black" width={80} height={26} />
-            </a>
+            <div className="header__container">
+              <a href="h">
+                <HeaderLogo color="black" width={80} height={26} />
+              </a>
+
+              <MenuDesktop />
+            </div>
 
             <div className="header__icon">
               <IconComponent name="menu-icon" width={14} height={9} />
             </div>
-
-            <MenuDesktop />
 
             <div className="header__right">
               <div className="header__right--fav">

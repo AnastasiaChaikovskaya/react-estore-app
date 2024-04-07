@@ -2,17 +2,17 @@ import React, { FC, useEffect, useRef, useState } from 'react';
 import '@/components/SelectorComponent/SelectorComponent.scss';
 import IconComponent from '../IconComponent';
 
-type TItem = string;
+type TItem<T> = T;
 
-type Props = {
+type Props<T> = {
   placeholder: string;
-  items: TItem[];
+  items: TItem<T>[];
   width: number;
 };
 
-const SelectorComponent: FC<Props> = ({ placeholder, items, width }) => {
+const SelectorComponent: FC<Props<string>> = ({ placeholder, items, width }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<TItem | null>(null);
+  const [selectedOption, setSelectedOption] = useState<TItem<string> | null>(null);
 
   const selectorRef = useRef<HTMLDivElement>(null);
 
@@ -20,12 +20,18 @@ const SelectorComponent: FC<Props> = ({ placeholder, items, width }) => {
     setIsOpen(!isOpen);
   };
 
-  const handleSelectOption = (item: TItem) => {
+  const handleSelectOption = (item: TItem<string>) => {
     setSelectedOption(item);
     setIsOpen(false);
   };
 
+  console.log(isOpen);
+
   useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
     const handleDocumentClick = (event: MouseEvent) => {
       if (selectorRef.current && !selectorRef.current.contains(event.target as Node)) {
         setIsOpen(false);
@@ -42,7 +48,7 @@ const SelectorComponent: FC<Props> = ({ placeholder, items, width }) => {
   }, [isOpen]);
 
   return (
-    <div className="selector" style={{ width: width }}>
+    <div className="selector" style={{ width: width }} ref={selectorRef}>
       <label className="selector__name">{placeholder}</label>
 
       <button className="selector__button" onClick={handleOpenSelector}>
@@ -60,7 +66,7 @@ const SelectorComponent: FC<Props> = ({ placeholder, items, width }) => {
       </button>
 
       {isOpen && (
-        <div className="selector__menu" ref={selectorRef}>
+        <div className="selector__menu">
           {items.map((item, index) => (
             <div className="selector__item" key={index} onClick={() => handleSelectOption(item)}>
               {item}
