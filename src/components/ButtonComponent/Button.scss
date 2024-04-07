@@ -13,7 +13,7 @@
     height: 16px;
   }
 
-  &--default-button {
+  &--default {
     border-color: #b4bdc3;
 
     &:hover {
@@ -25,7 +25,7 @@
     }
   }
 
-  &--circle-button {
+  &--circle {
     height: 30px;
     width: 30px;
     border-radius: 50%;
@@ -47,7 +47,7 @@
     }
   }
 
-  &--back-button {
+  &--link {
     border: 0px;
     color: #89939a;
     gap: 4px;
@@ -58,21 +58,21 @@
   }
 }
 
-.btn--s {
+.btn--sm {
   padding: 8px;
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
 }
 
-.btn--m {
+.btn--md {
   padding: 12px;
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
 }
 
-.btn--l {
+.btn--lg {
   padding: 9.5px 60px;
   font-size: 14px;
   font-weight: 500;
