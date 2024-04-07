@@ -1,95 +1,72 @@
 .btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   cursor: pointer;
   border: 1px #e2e6e9 solid;
   width: fit-content;
   font-family: Montserrat, sans-serif;
   background-color: white;
-}
 
-.btn--pagination {
-  &:hover {
-    border-color: #313237;
-  }
-  &-selected {
-    color: #fff;
-    background-color: #313237;
-  }
-}
-
-.btn--slider-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-color: #b4bdc3;
-  &:hover {
-    border-color: #313237;
+  &__icon {
+    width: 16px;
+    height: 16px;
   }
 
-  &-disable {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-color: #e2e6e9;
-  }
-}
-
-.btn--color-button {
-  border-radius: 50%;
-  background-color: #fcdbc1;
-  border-color: #e2e6e9;
-
-  &:hover {
+  &--default-button {
     border-color: #b4bdc3;
+
+    &:hover {
+      border-color: #313237;
+    }
+
+    &:disabled {
+      border-color: #e2e6e9;
+    }
   }
 
-  &-selected {
-    border-color: #313237;
-  }
-}
-
-.btn--fav-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-color: #b4bdc3;
-
-  &:hover {
-    border-color: #313237;
-  }
-
-  &-selected {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  &--circle-button {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: #fcdbc1;
     border-color: #e2e6e9;
-  }
-}
 
-.btn--primary {
-  background-color: #313237;
-  border-color: #313237;
-  color: #fff;
-
-  &:hover {
-    box-shadow: 0px 3px 13px 0px #17203166;
+    &:hover {
+      border-color: #b4bdc3;
+    }
   }
 
-  &-selected {
-    color: #27ae60;
-    background-color: #fff;
-    border-color: #e2e6e9;
+  &--primary {
+    background-color: #313237;
+    border-color: #313237;
+    color: #fff;
+
+    &:hover {
+      box-shadow: 0px 3px 13px 0px #17203166;
+    }
+  }
+
+  &--back-button {
+    border: 0px;
+    color: #89939a;
+    gap: 4px;
+
+    &:hover {
+      color: #313237;
+    }
   }
 }
 
 .btn--s {
-  padding: 7px 14px;
+  padding: 8px;
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
 }
 
 .btn--m {
-  padding: 13px;
+  padding: 12px;
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
