@@ -1,0 +1,115 @@
+@import '../../utils/mixins';
+
+.heading {
+  font-family: Montserrat, sans-serif;
+
+  &--size {
+    &-1 {
+      font-size: 48px;
+      line-height: 56px;
+      letter-spacing: -0.01em;
+
+      @include on-phone {
+        font-size: 32px;
+        line-height: 41px;
+      }
+    }
+
+    &-2 {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+
+      @include on-phone {
+        font-size: 22px;
+        line-height: 31px;
+      }
+    }
+
+    &-3 {
+      font-size: 22px;
+      line-height: 31px;
+
+      @include on-phone {
+        font-size: 20px;
+        line-height: 26px;
+      }
+    }
+
+    &-4 {
+      font-size: 20px;
+      line-height: 26px;
+
+      @include on-phone {
+        font-size: 16px;
+        line-height: 20px;
+      }
+    }
+  }
+
+  &--weight {
+    &-bold {
+      font-weight: 700;
+    }
+
+    &-thin {
+      font-weight: 100;
+    }
+
+    &-semi-bold {
+      font-weight: 600;
+    }
+
+    &-extra-light {
+      font-weight: 200;
+    }
+
+    &-light {
+      font-weight: 300;
+    }
+
+    &-regular {
+      font-weight: 400;
+    }
+
+    &-black {
+      font-weight: 900;
+    }
+
+    &-medium {
+      font-weight: 500;
+    }
+  }
+
+  &--align {
+    &-center {
+      text-align: center;
+    }
+
+    &-left {
+      text-align: left;
+    }
+
+    &-right {
+      text-align: right;
+    }
+  }
+
+  &--transform {
+    &-none {
+      text-transform: none;
+    }
+
+    &-uppercase {
+      text-transform: uppercase;
+    }
+
+    &-lowercase {
+      text-transform: lowercase;
+    }
+
+    &-capitalize {
+      text-transform: capitalize;
+    }
+  }
+}
