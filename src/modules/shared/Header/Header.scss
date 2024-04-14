@@ -1,4 +1,10 @@
 .header {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 0;
+  }
+
   &__top-bar {
     display: flex;
     flex-direction: row;

@@ -11,6 +11,17 @@ body {
   &__content {
     display: flex;
     flex-direction: column;
+    padding-block: 24px;
     column-gap: 56px;
+
+    @include on-tablet {
+      column-gap: 64px;
+      padding-block: 32px;
+    }
+
+    @include on-desktop {
+      padding-block: 56px;
+      column-gap: 80px;
+    }
   }
 }

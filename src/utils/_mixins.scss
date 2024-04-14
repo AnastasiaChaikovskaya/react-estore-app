@@ -18,10 +18,24 @@
   }
 }
 
-@mixin content-pudding-inline {
-  padding-inline: 24px;
+@mixin pageGrid {
+  --columns: 4;
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
 
   @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
+}
+
+@mixin content-pudding-inline {
+  @include on-tablet {
+    padding-inline: 24px;
     max-width: 1200px;
     margin-inline: auto;
   }

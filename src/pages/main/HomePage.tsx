@@ -1,11 +1,10 @@
-import SelectorComponent from '@/components/SelectorComponent/SlectorComponent';
 import React from 'react';
-// import Home from '../modules/shared/HomePage/Home';
+import HeroSection from '@/modules/HomePage/components/HeroSection/HeroSection';
 
 const items = ['1', '2'];
 
 function HomePage() {
-  return <SelectorComponent width={176} placeholder="Sort by" items={items} />;
+  return <HeroSection />;
 }
 
 export default HomePage;

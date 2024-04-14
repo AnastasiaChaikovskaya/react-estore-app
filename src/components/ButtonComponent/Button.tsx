@@ -12,7 +12,7 @@ export const Button: FC<ButtonProps> = (props) => {
   const { variant = 'default', size = 'md', iconLeft, className, children, ...restProps } = props;
 
   return (
-    <button className={clsx('btn', `btn--${variant}`, `btn--${size}`, className)} {...restProps}>
+    <button {...restProps} className={clsx('btn', `btn--${variant}`, `btn--${size}`, className)}>
       {iconLeft && (
         <span className="btn__icon">
           {React.cloneElement(iconLeft, {

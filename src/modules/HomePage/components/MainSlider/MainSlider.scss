@@ -1,0 +1,86 @@
+@import '../../../../utils/vars';
+@import '../../../../utils/mixins';
+
+.slider {
+  display: flex;
+  gap: 19px;
+  justify-content: center;
+  position: relative;
+
+  &__container {
+    height: 320px;
+    max-width: 1040px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    @include on-tablet {
+      height: 220px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $main-color-text;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  &__img {
+    object-fit: cover;
+    height: 320px;
+    width: 100%;
+
+    @include on-tablet {
+      height: 220px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &__button {
+    &.btn {
+      @include on-phone {
+        display: none;
+      }
+
+      @include on-tablet {
+        display: flex;
+      }
+    }
+  }
+}
+
+.slider__background.active {
+  opacity: 1;
+}
+
+.slider__background:not(.active) {
+  opacity: 0;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 18px;
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    background-color: #e2e6e9;
+
+    &--active {
+      background-color: #313237;
+    }
+  }
+}
