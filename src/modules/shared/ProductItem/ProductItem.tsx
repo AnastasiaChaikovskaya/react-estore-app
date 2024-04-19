@@ -1,30 +1,39 @@
 import React, { FC } from 'react';
-import { TAccessories, TPhone, TTablet } from './types';
+import { TAccessories, TPhone, TProduct, TTablet } from './products';
 import Text from '@/components/Text/Text';
 import Heading from '@/components/Heading/Heading';
 import Button from '@/components/ButtonComponent/Button';
 import IconComponent from '@/components/IconComponent';
 import '@/modules/shared/ProductItem/ProductItem.scss';
+import clsx from 'clsx';
 
 interface IProductItemProps {
-  productItem: TPhone | TTablet | TAccessories;
+  productItem: TProduct;
 }
 
 const ProductItem: FC<IProductItemProps> = ({ productItem }) => {
+  const { name, screen, image, fullPrice, price, capacity, ram } = productItem;
   return (
     <div className="product__wrapper">
       <div className="product__container">
-        <img src={productItem.images[0]} alt="1" className="product__img" />
+        <img src={image} alt="1" className="product__img" />
       </div>
       <Text tag="p" size="base" weight="medium" className="product__name">
-        {productItem.name}
+        {name}
       </Text>
       <div className="price">
-        <Heading tag="h3" size="3" weight="bold" className="price__regular">
-          {`$${productItem.priceRegular}`}
-        </Heading>
-        <Heading tag="h3" size="3" weight="medium" className="price__discount">
-          {`$${productItem.priceDiscount}`}
+        {price && (
+          <Heading tag="h3" size="3" weight="bold" className="price__discount">
+            {`$${price}`}
+          </Heading>
+        )}
+        <Heading
+          tag="h3"
+          size="3"
+          weight="bold"
+          className={clsx('price__regular', { 'price__regular--with-discount': price })}
+        >
+          {`$${fullPrice}`}
         </Heading>
       </div>
       <div className="product__line"></div>
@@ -34,7 +43,7 @@ const ProductItem: FC<IProductItemProps> = ({ productItem }) => {
             Screen
           </Text>
           <Text tag="p" weight="semi-bold" size="sm" transform="uppercase" className="characteristic__description">
-            {productItem.screen}
+            {screen}
           </Text>
         </div>
         <div className="characteristic__props">
@@ -42,7 +51,7 @@ const ProductItem: FC<IProductItemProps> = ({ productItem }) => {
             Capacity
           </Text>
           <Text tag="p" weight="semi-bold" size="sm" transform="uppercase" className="characteristic__description">
-            {productItem.capacity}
+            {capacity}
           </Text>
         </div>
         <div className="characteristic__props">
@@ -50,7 +59,7 @@ const ProductItem: FC<IProductItemProps> = ({ productItem }) => {
             RAM
           </Text>
           <Text tag="p" weight="semi-bold" size="sm" transform="uppercase" className="characteristic__description">
-            {productItem.ram}
+            {ram}
           </Text>
         </div>
       </div>

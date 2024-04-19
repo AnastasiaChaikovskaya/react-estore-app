@@ -1,0 +1,28 @@
+.slider-product {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &--heading {
+      color: #313237;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  &__button {
+    display: flex;
+    gap: 16px;
+    height: fit-content;
+  }
+}

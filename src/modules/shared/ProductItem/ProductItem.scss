@@ -16,7 +16,7 @@
   }
 
   &__img {
-    width: 150px;
+    width: 70%;
   }
 
   &__name {
@@ -59,10 +59,15 @@
 
   &__regular {
     color: #313237;
+
+    &--with-discount {
+      color: #89939a;
+      font-weight: 500;
+      text-decoration: line-through;
+    }
   }
 
   &__discount {
-    color: #89939a;
-    text-decoration: line-through;
+    color: #313237;
   }
 }
