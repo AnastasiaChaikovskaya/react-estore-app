@@ -24,6 +24,7 @@ const Text: FC<TextProps> = (props) => {
         `text--align-${align}`,
         `text--weight-${weight}`,
         `text--transform-${transform}`,
+        className,
       ),
     },
     children,

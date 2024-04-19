@@ -48,8 +48,8 @@ const MainSlider: FC<ISliderProps> = ({ imgURL }) => {
         </Button>
         <div className="slider__container" {...handlers}>
           {imgURL.map((url, index) => (
-            <div className={clsx('slider__background', { active: index === currentImg })}>
-              <img key={index} src={url} className="slider__img" />
+            <div key={index} className={clsx('slider__background', { active: index === currentImg })}>
+              <img src={url} className="slider__img" />
             </div>
           ))}
         </div>
