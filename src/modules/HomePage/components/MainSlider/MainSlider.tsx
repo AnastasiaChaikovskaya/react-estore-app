@@ -12,18 +12,19 @@ interface ISliderProps {
 const MainSlider: FC<ISliderProps> = ({ imgURL }) => {
   const [currentImg, setCurrentImg] = useState(0);
 
-  const isDisabledPrev = currentImg === 0;
-  const isDisabledNext = currentImg === imgURL.length - 1;
-
   const handleSwipeLeft = () => {
     if (currentImg > 0) {
       setCurrentImg(currentImg - 1);
+    } else {
+      setCurrentImg(imgURL.length - 1);
     }
   };
 
   const handleSwipeRight = () => {
     if (currentImg < imgURL.length - 1) {
       setCurrentImg(currentImg + 1);
+    } else {
+      setCurrentImg(0);
     }
   };
 
@@ -37,13 +38,7 @@ const MainSlider: FC<ISliderProps> = ({ imgURL }) => {
   return (
     <div className="main__slider">
       <div className="slider">
-        <Button
-          variant="default"
-          size="sm"
-          className="slider__button"
-          onClick={handleSwipeLeft}
-          disabled={isDisabledPrev}
-        >
+        <Button variant="default" size="sm" className="slider__button" onClick={handleSwipeLeft}>
           <IconComponent name="arrow-left" height={16} width={16} />
         </Button>
         <div className="slider__container" {...handlers}>
@@ -53,13 +48,7 @@ const MainSlider: FC<ISliderProps> = ({ imgURL }) => {
             </div>
           ))}
         </div>
-        <Button
-          variant="default"
-          size="sm"
-          className="slider__button"
-          onClick={handleSwipeRight}
-          disabled={isDisabledNext}
-        >
+        <Button variant="default" size="sm" className="slider__button" onClick={handleSwipeRight}>
           <IconComponent name="arrow-right" height={16} width={16} />
         </Button>
       </div>

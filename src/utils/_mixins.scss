@@ -37,6 +37,9 @@
   @include on-tablet {
     padding-inline: 24px;
     max-width: 1200px;
+  }
+
+  @include on-desktop {
     margin-inline: auto;
   }
 }

@@ -9,7 +9,9 @@ const NewModelSection = () => {
     try {
       const response = await fetch('/api/products.json');
       const productsFromServer: TProduct[] = await response.json();
-      const newModels = productsFromServer.filter((item) => item.category.includes('phones') && item.year >= 2022);
+      const newModels = productsFromServer
+        .filter((item) => item.category.includes('phones') && item.year >= 2022)
+        .slice(0, 10);
       setProducts(newModels);
     } catch (error) {}
   };
