@@ -1,0 +1,105 @@
+@import '../../../../utils/mixins';
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 16px;
+  gap: 24px;
+
+  @include on-tablet {
+    padding-inline: 0;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 15px;
+    }
+  }
+
+  &__title {
+    color: #313237;
+  }
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__bg-phones {
+    height: 228px;
+    width: 228px;
+    position: relative;
+    background-color: #6d6474;
+
+    @include on-tablet {
+      height: 187px;
+      width: 187px;
+    }
+
+    @include on-desktop {
+      height: 368px;
+      width: 368px;
+    }
+  }
+
+  &__bg-tablets {
+    height: 228px;
+    width: 228px;
+    position: relative;
+    background-color: #8d8d92;
+
+    @include on-tablet {
+      height: 187px;
+      width: 187px;
+    }
+
+    @include on-desktop {
+      height: 368px;
+      width: 368px;
+    }
+  }
+
+  &__bg-accessories {
+    height: 228px;
+    width: 228px;
+    position: relative;
+    background-color: #973d5f;
+
+    @include on-tablet {
+      height: 187px;
+      width: 187px;
+    }
+
+    @include on-desktop {
+      height: 368px;
+      width: 368px;
+    }
+  }
+
+  &__img {
+    height: 228px;
+    width: 228px;
+
+    @include on-tablet {
+      height: 187px;
+      width: 187px;
+    }
+
+    @include on-desktop {
+      height: 368px;
+      width: 368px;
+    }
+  }
+
+  &__title {
+    color: #313237;
+  }
+}
