@@ -34,8 +34,8 @@
   gap: 24px;
 
   &__bg-phones {
-    height: 228px;
-    width: 228px;
+    height: 288px;
+    width: 288px;
     position: relative;
     background-color: #6d6474;
 
@@ -51,8 +51,8 @@
   }
 
   &__bg-tablets {
-    height: 228px;
-    width: 228px;
+    height: 288px;
+    width: 288px;
     position: relative;
     background-color: #8d8d92;
 
@@ -68,8 +68,8 @@
   }
 
   &__bg-accessories {
-    height: 228px;
-    width: 228px;
+    height: 288px;
+    width: 288px;
     position: relative;
     background-color: #973d5f;
 
@@ -85,8 +85,8 @@
   }
 
   &__img {
-    height: 228px;
-    width: 228px;
+    height: 288px;
+    width: 288px;
 
     @include on-tablet {
       height: 187px;

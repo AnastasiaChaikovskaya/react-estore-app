@@ -17,6 +17,8 @@ const WIDTH = 272 + 16;
 const ProductSlider: FC<IProductSliderProps> = ({ products, heading }) => {
   const [currentImg, setCurrentImg] = useState(0);
   const [currentActiveSlides, setCurrentActiveSlides] = useState(0);
+  const disableNext = currentImg === products.length - currentActiveSlides + 0.5;
+  const disablePrev = currentImg === 0;
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -54,10 +56,10 @@ const ProductSlider: FC<IProductSliderProps> = ({ products, heading }) => {
           {heading}
         </Heading>
         <div className="slider-product__button">
-          <Button variant="default" size="sm" onClick={handlePrevSlide}>
+          <Button variant="default" size="sm" onClick={handlePrevSlide} disabled={disablePrev}>
             <IconComponent name="arrow-left" height={16} width={16} />
           </Button>
-          <Button variant="default" size="sm" onClick={handleNextSlide}>
+          <Button variant="default" size="sm" onClick={handleNextSlide} disabled={disableNext}>
             <IconComponent name="arrow-right" height={16} width={16} />
           </Button>
         </div>

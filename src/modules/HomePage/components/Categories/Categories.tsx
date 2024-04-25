@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import Heading from '@/components/Heading/Heading';
 import Text from '@/components/Text/Text';
 import { TProduct } from '@/modules/shared/ProductItem/products';
-import Accessories from '@/assets/categories/phones.png';
+import Accessories from '@/assets/categories/accesories.png';
 import Tablets from '@/assets/categories/tablets.png';
-import Phones from '@/assets/categories/accesories.png';
+import Phones from '@/assets/categories/phones.png';
 import '@/modules/HomePage/components/Categories/Categories.scss';
 
 const Categories = () => {
