@@ -4,6 +4,7 @@ import { useAppSelector } from '@/hooks';
 import ProductItem from '../ProductItem/ProductItem';
 import { useSearchParams } from 'react-router-dom';
 import Pagination from '../Pagination/Pagination';
+import { useEffect } from 'react';
 
 const sortParam = ['Newest', 'Oldest'];
 const itemsOnPage = ['10', '12', '14', '16'];
@@ -16,6 +17,10 @@ const Catalog = () => {
   const firstItem = (+page - 1) * +perPage;
   const lastItem = Math.min(+page * +perPage, phones.length);
   const visibleItems = phones.slice(firstItem, lastItem);
+
+  useEffect(() => {
+    setSearchParams(`?page=${page}&perPage=${perPage}`);
+  }, []);
 
   return (
     <div className="products">
