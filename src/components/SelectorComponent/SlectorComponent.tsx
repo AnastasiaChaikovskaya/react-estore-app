@@ -52,7 +52,7 @@ const SelectorComponent: FC<Props<string>> = ({ placeholder, items, width }) => 
       <label className="selector__name">{placeholder}</label>
 
       <button className="selector__button" onClick={handleOpenSelector}>
-        <span className="selector__placeholder">{selectedOption ? selectedOption : placeholder}</span>
+        <span className="selector__placeholder">{selectedOption ? selectedOption : items[0]}</span>
         <IconComponent
           name="arrow-down"
           width={16}

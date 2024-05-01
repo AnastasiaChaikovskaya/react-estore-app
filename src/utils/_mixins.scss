@@ -34,13 +34,18 @@
 }
 
 @mixin content-pudding-inline {
+  display: flex;
+  flex-direction: column;
+  row-gap: 56px;
   @include on-tablet {
+    row-gap: 64px;
     padding-inline: 24px;
     max-width: 1200px;
   }
 
   @include on-desktop {
     margin-inline: auto;
+    row-gap: 80px;
   }
 }
 

@@ -4,6 +4,9 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { PUBLIC_ROUTS } from '@/contstants/routs';
 import MainLayout from '@/modules/shared/MainLayout';
 import { AccessoriesPage, HomePage, PhonesPage, TabletsPage } from '@/pages/main';
+import ProductPage from './pages/main/ProductPage';
+import { store } from '@/store';
+import { Provider } from 'react-redux';
 
 const routs = createBrowserRouter([
   {
@@ -16,22 +19,53 @@ const routs = createBrowserRouter([
       },
       {
         path: PUBLIC_ROUTS.PHONES,
-        element: <PhonesPage />,
+        children: [
+          {
+            index: true,
+            element: <PhonesPage />,
+          },
+          {
+            path: ':itemId',
+            element: <ProductPage />,
+          },
+        ],
       },
       {
         path: PUBLIC_ROUTS.TABLETS,
-        element: <TabletsPage />,
+        children: [
+          {
+            index: true,
+            element: <TabletsPage />,
+          },
+          {
+            path: ':itemId',
+            element: <ProductPage />,
+          },
+        ],
       },
       {
         path: PUBLIC_ROUTS.ACCESSORIES,
-        element: <AccessoriesPage />,
+        children: [
+          {
+            index: true,
+            element: <AccessoriesPage />,
+          },
+          {
+            path: ':itemId',
+            element: <ProductPage />,
+          },
+        ],
       },
     ],
   },
 ]);
 
 function App() {
-  return <RouterProvider router={routs} />;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={routs} />
+    </Provider>
+  );
 }
 
 export default App;

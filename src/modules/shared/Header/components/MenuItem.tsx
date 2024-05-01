@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { IMenuLink } from '../constants';
 import { NavLink } from 'react-router-dom';
+import { getIsActiveClass } from '@/helpers/getIsActiveClass';
 
 interface IProps {
   item: IMenuLink;
@@ -9,7 +10,7 @@ interface IProps {
 const MenuItem: FC<IProps> = ({ item }) => {
   return (
     <li className="nav__item">
-      <NavLink className="nav__link" to={item.link}>
+      <NavLink className={getIsActiveClass} to={item.link}>
         {item.label}
       </NavLink>
     </li>

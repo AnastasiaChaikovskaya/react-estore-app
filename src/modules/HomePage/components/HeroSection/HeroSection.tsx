@@ -6,14 +6,12 @@ import MainSlider from '../MainSlider/MainSlider';
 
 const HeroSection = () => {
   return (
-    <div className="container">
-      <div className="main__section">
-        <Heading tag="h1" size="1" weight="bold" align="left" className="main__title">
-          Welcome to Nice Gadgets store!
-        </Heading>
+    <div className="main__section">
+      <Heading tag="h1" size="1" weight="bold" align="left" className="main__title">
+        Welcome to Nice Gadgets store!
+      </Heading>
 
-        <MainSlider imgURL={banners} />
-      </div>
+      <MainSlider imgURL={banners} />
     </div>
   );
 };

@@ -1,0 +1,26 @@
+@import '../../../utils/mixins';
+
+.products {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 0;
+  }
+
+  &__filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap: 8px;
+  }
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+}

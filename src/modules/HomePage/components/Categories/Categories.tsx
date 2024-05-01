@@ -33,52 +33,50 @@ const Categories = () => {
     getProducts();
   }, []);
   return (
-    <div className="container">
-      <div className="categories">
-        <Heading tag="h2" size="2" align="left" className="categories__title" weight="bold">
-          Shop by category
-        </Heading>
-        <div className="categories__wrapper">
-          <div className="category">
-            <div className="category__bg-phones">
-              <img src={Phones} alt="/" className="category__img" />
-            </div>
-            <div className="category__info">
-              <Heading tag="h4" size="4" align="left" weight="semi-bold" className="category__title">
-                Mobile phones
-              </Heading>
-              <Text tag="p" size="base" align="left">
-                {`${quantityOfPhones} models`}
-              </Text>
-            </div>
+    <div className="categories">
+      <Heading tag="h2" size="2" align="left" className="categories__title" weight="bold">
+        Shop by category
+      </Heading>
+      <div className="categories__wrapper">
+        <div className="category">
+          <div className="category__bg-phones">
+            <img src={Phones} alt="/" className="category__img" />
           </div>
-
-          <div className="category">
-            <div className="category__bg-tablets">
-              <img src={Tablets} alt="/" className="category__img" />
-            </div>
-            <div className="category__info">
-              <Heading tag="h4" size="4" align="left" weight="semi-bold" className="category__title">
-                Tablets
-              </Heading>
-              <Text tag="p" size="base" align="left">
-                {`${quantityOfTablets} models`}
-              </Text>
-            </div>
+          <div className="category__info">
+            <Heading tag="h4" size="4" align="left" weight="semi-bold" className="category__title">
+              Mobile phones
+            </Heading>
+            <Text tag="p" size="base" align="left">
+              {`${quantityOfPhones} models`}
+            </Text>
           </div>
+        </div>
 
-          <div className="category">
-            <div className="category__bg-accessories">
-              <img src={Accessories} alt="/" className="category__img" />
-            </div>
-            <div className="category__info">
-              <Heading tag="h4" size="4" align="left" weight="semi-bold" className="category__title">
-                Accessories
-              </Heading>
-              <Text tag="p" size="base" align="left">
-                {`${quantityOfAccessories} models`}
-              </Text>
-            </div>
+        <div className="category">
+          <div className="category__bg-tablets">
+            <img src={Tablets} alt="/" className="category__img" />
+          </div>
+          <div className="category__info">
+            <Heading tag="h4" size="4" align="left" weight="semi-bold" className="category__title">
+              Tablets
+            </Heading>
+            <Text tag="p" size="base" align="left">
+              {`${quantityOfTablets} models`}
+            </Text>
+          </div>
+        </div>
+
+        <div className="category">
+          <div className="category__bg-accessories">
+            <img src={Accessories} alt="/" className="category__img" />
+          </div>
+          <div className="category__info">
+            <Heading tag="h4" size="4" align="left" weight="semi-bold" className="category__title">
+              Accessories
+            </Heading>
+            <Text tag="p" size="base" align="left">
+              {`${quantityOfAccessories} models`}
+            </Text>
           </div>
         </div>
       </div>

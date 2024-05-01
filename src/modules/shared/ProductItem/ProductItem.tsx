@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { TAccessories, TPhone, TProduct, TTablet } from './products';
+import { TProduct } from './products';
 import Text from '@/components/Text/Text';
 import Heading from '@/components/Heading/Heading';
 import Button from '@/components/ButtonComponent/Button';

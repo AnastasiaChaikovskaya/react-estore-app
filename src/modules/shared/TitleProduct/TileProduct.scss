@@ -1,0 +1,21 @@
+@import '../../../utils/mixins';
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 8px;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 0;
+  }
+
+  &__title {
+    color: #313237;
+  }
+
+  &__description {
+    color: #89939a;
+  }
+}

@@ -1,0 +1,25 @@
+@import '../../../utils/mixins';
+
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 0;
+  }
+
+  &__home {
+    height: 16px;
+  }
+
+  &__active {
+    color: #313237;
+  }
+
+  &__non-active {
+    color: #89939a;
+  }
+}

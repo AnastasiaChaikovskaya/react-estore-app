@@ -15,13 +15,13 @@ body {
     row-gap: 56px;
 
     @include on-tablet {
-      column-gap: 64px;
+      row-gap: 64px;
       padding-block: 32px;
     }
 
     @include on-desktop {
       padding-block: 56px;
-      column-gap: 80px;
+      row-gap: 80px;
     }
   }
 }

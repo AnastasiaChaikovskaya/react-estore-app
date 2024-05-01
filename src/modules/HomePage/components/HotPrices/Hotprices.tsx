@@ -18,10 +18,8 @@ const HotPrices = () => {
   }, []);
 
   return (
-    <div className="container">
-      <div className="hot-prices">
-        <ProductSlider products={hotPrices} heading="Hot prices" />
-      </div>
+    <div className="hot-prices">
+      <ProductSlider products={hotPrices} heading="Hot prices" />
     </div>
   );
 };
