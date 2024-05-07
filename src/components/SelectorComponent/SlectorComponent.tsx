@@ -1,31 +1,27 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import '@/components/SelectorComponent/SelectorComponent.scss';
 import IconComponent from '../IconComponent';
+import { useSearchParams } from 'react-router-dom';
+import clsx from 'clsx';
 
 type TItem<T> = T;
 
 type Props<T> = {
   placeholder: string;
+  value: string | null;
   items: TItem<T>[];
   width: number;
+  onChange: (newValueL: string) => void;
 };
 
-const SelectorComponent: FC<Props<string>> = ({ placeholder, items, width }) => {
+const SelectorComponent: FC<Props<string>> = ({ placeholder, items, width, value, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<TItem<string> | null>(null);
 
   const selectorRef = useRef<HTMLDivElement>(null);
 
   const handleOpenSelector = () => {
     setIsOpen(!isOpen);
   };
-
-  const handleSelectOption = (item: TItem<string>) => {
-    setSelectedOption(item);
-    setIsOpen(false);
-  };
-
-  console.log(isOpen);
 
   useEffect(() => {
     if (!isOpen) {
@@ -52,7 +48,7 @@ const SelectorComponent: FC<Props<string>> = ({ placeholder, items, width }) => 
       <label className="selector__name">{placeholder}</label>
 
       <button className="selector__button" onClick={handleOpenSelector}>
-        <span className="selector__placeholder">{selectedOption ? selectedOption : items[0]}</span>
+        <span className="selector__placeholder">{value ? value : items[0]}</span>
         <IconComponent
           name="arrow-down"
           width={16}
@@ -68,7 +64,14 @@ const SelectorComponent: FC<Props<string>> = ({ placeholder, items, width }) => 
       {isOpen && (
         <div className="selector__menu">
           {items.map((item, index) => (
-            <div className="selector__item" key={index} onClick={() => handleSelectOption(item)}>
+            <div
+              className={clsx('selector__item', { 'selector__item--active': item === value })}
+              key={index}
+              onClick={() => {
+                onChange(item);
+                setIsOpen(false);
+              }}
+            >
               {item}
             </div>
           ))}

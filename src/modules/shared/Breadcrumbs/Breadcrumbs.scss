@@ -11,15 +11,21 @@
     padding-inline: 0;
   }
 
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
   &__home {
     height: 16px;
   }
 
   &__active {
-    color: #313237;
+    color: #89939a;
   }
 
   &__non-active {
-    color: #89939a;
+    color: #313237;
   }
 }

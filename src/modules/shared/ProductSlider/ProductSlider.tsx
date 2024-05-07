@@ -42,12 +42,8 @@ const ProductSlider: FC<IProductSliderProps> = ({ products, heading }) => {
     if (containerRef && containerRef.current && products.length > 0) {
       const { width } = containerRef.current.getBoundingClientRect();
       setCurrentActiveSlides(Math.ceil(width / WIDTH));
-      console.log(width);
     }
   }, [containerRef.current]);
-
-  console.log(currentActiveSlides);
-  console.log(currentImg);
 
   return (
     <div className="slider-product">

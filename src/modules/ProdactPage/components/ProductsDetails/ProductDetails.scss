@@ -1,0 +1,159 @@
+@import '../../../../utils/mixins';
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 0;
+  }
+
+  &__title {
+    color: #313237;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: start;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__imgs {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-direction: column;
+
+    @include on-tablet {
+      flex-direction: row-reverse;
+      align-items: start;
+    }
+
+    &--main-img {
+      height: 274px;
+      width: 274px;
+
+      @include on-tablet {
+        height: 287px;
+        width: 287px;
+      }
+
+      @include on-desktop {
+        height: 464px;
+        width: 464px;
+      }
+    }
+
+    &--dop {
+      display: flex;
+      gap: 8px;
+      flex-direction: row;
+
+      @include on-tablet {
+        flex-direction: column;
+      }
+
+      &-imgs {
+        width: 42px;
+        height: 42px;
+
+        @include on-tablet {
+          width: 30px;
+          height: 30px;
+        }
+
+        @include on-desktop {
+          width: 80px;
+          height: 80px;
+        }
+      }
+    }
+  }
+}
+
+.info {
+  &__wrapper {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+  }
+
+  &__chose {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__buy {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__price {
+    display: flex;
+    justify-content: start;
+    gap: 8px;
+  }
+
+  &__line {
+    height: 1px;
+    width: 100%;
+    background-color: #e2e6e9;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    @include on-tablet {
+      width: 320px;
+    }
+  }
+
+  &__characteristic {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__details {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.characteristic {
+  &__title {
+    color: #89939a;
+  }
+}
+
+.button-color--active {
+  border: 1px #313237 solid;
+}
+
+.button-capacity--active {
+  background-color: #313237;
+  color: #e2e6e9;
+}

@@ -2,9 +2,20 @@
   display: flex;
   gap: 16px;
   justify-content: center;
+  overflow: hidden;
 
   &__pages {
     display: flex;
     gap: 8px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+
+    &--active {
+      color: white;
+      background-color: #313237;
+    }
   }
 }

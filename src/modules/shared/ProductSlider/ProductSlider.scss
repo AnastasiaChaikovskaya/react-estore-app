@@ -31,16 +31,6 @@
     gap: 16px;
     overflow: hidden;
     grid-column: 1 / -1;
-    // width: 272px;
-
-    //   @include on-tablet {
-    //     width: calc(272px * 2);
-    //   }
-
-    //   @include on-desktop {
-    //     width: calc(288px * 3.5);
-    //   }
-    // }
   }
   &__button {
     display: flex;

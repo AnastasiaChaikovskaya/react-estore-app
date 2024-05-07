@@ -2,12 +2,13 @@ import React from 'react';
 import MenuDesktop from '@/modules/shared/Header/components/MenuDesktop';
 import IconComponent from '@/components/IconComponent';
 import HeaderLogo from '@/assets/icons/header-logo.svg?react';
+import { NavLink } from 'react-router-dom';
 
 export const Header = () => {
   return (
     <>
-      <div className="container">
-        <header className="header">
+      <header className="header">
+        <div className="container">
           <div className="header__top-bar">
             <div className="header__container">
               <a href="h">
@@ -22,17 +23,16 @@ export const Header = () => {
             </div>
 
             <div className="header__right">
-              <div className="header__right--fav">
+              <NavLink to={'/favorites'} className="header__right--fav">
                 <IconComponent name="heart" width={16} height={16} />
-              </div>
-              <div className="header__right--cart">
+              </NavLink>
+              <NavLink to={'/cart'} className="header__right--cart">
                 <IconComponent name="shop-cart" width={16} height={16} />
-              </div>
+              </NavLink>
             </div>
           </div>
-        </header>
-      </div>
-      <div className="header__line"></div>
+        </div>
+      </header>
     </>
   );
 };

@@ -1,0 +1,52 @@
+@import '../../../../utils/mixins';
+
+.cart-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid #e2e6e9;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  &__main-info {
+    display: flex;
+    align-items: center;
+  }
+
+  &__img {
+    width: 66px;
+    height: 66px;
+  }
+
+  &__delete {
+    border: none;
+  }
+
+  &__name {
+    color: #313237;
+  }
+
+  &__prise-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__count {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__prise {
+    color: #313237;
+  }
+}

@@ -15,8 +15,8 @@ const MainLayout = () => {
       dispatch(setLoadingPhones(true));
       const response = await fetch('/api/products.json');
       const productsFromServer: TProduct[] = await response.json();
-      const newModels = productsFromServer.filter((item) => item.category.includes('phones'));
-      dispatch(setPhones(newModels));
+      const phones = productsFromServer.filter((item) => item.category.includes('phones'));
+      dispatch(setPhones(phones));
     } catch (error) {
       dispatch(setErrorPhones(true));
     } finally {
@@ -30,14 +30,14 @@ const MainLayout = () => {
   return (
     <>
       <Header />
-      <div className="main">
-        <div className="main__content">
-          <div className="container">
+      <div className="container">
+        <div className="main">
+          <div className="main__content">
             <Outlet />
           </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 };

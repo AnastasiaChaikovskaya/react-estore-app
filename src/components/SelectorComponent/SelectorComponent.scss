@@ -43,6 +43,8 @@
     padding-block: 8px;
     display: flex;
     flex-direction: column;
+    position: relative;
+    z-index: 1;
     border: #b4bdc3 1px solid;
   }
 
@@ -57,6 +59,10 @@
     &:hover {
       color: #313237;
       background-color: #fafbfc;
+    }
+
+    &--active {
+      color: #313237;
     }
   }
 }

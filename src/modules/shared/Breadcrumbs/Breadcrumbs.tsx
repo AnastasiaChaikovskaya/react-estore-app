@@ -17,17 +17,33 @@ const Breadcrumbs = () => {
         const to = `/${pathNames.slice(0, index + 1).join('/')}`;
 
         return last ? (
-          <>
+          <span key={to} className="breadcrumbs__item">
             <IconComponent name="arrow-right" height={16} width={16} color="#B4BDC3" />
-            <Text key={to} tag="span" size="sm" align="left" transform="capitalize" className="breadcrumbs__active">
+            <Text
+              tag="span"
+              size="sm"
+              align="left"
+              transform="capitalize"
+              weight="semi-bold"
+              className="breadcrumbs__active"
+            >
               {value}
             </Text>
-          </>
+          </span>
         ) : (
-          <>
+          <Link to={to} key={to} className="breadcrumbs__item">
             <IconComponent name="arrow-right" height={16} width={16} color="#B4BDC3" />
-            <Link to={to} key={to} className="breadcrumbs__non-active"></Link>
-          </>
+            <Text
+              tag="span"
+              size="sm"
+              align="left"
+              weight="semi-bold"
+              transform="capitalize"
+              className="breadcrumbs__non-active"
+            >
+              {value.replace('-', ' ')}
+            </Text>
+          </Link>
         );
       })}
     </div>

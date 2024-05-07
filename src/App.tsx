@@ -7,6 +7,8 @@ import { AccessoriesPage, HomePage, PhonesPage, TabletsPage } from '@/pages/main
 import ProductPage from './pages/main/ProductPage';
 import { store } from '@/store';
 import { Provider } from 'react-redux';
+import FavoritePage from './pages/main/FavoritePage';
+import CartPage from './pages/main/CartPage';
 
 const routs = createBrowserRouter([
   {
@@ -55,6 +57,14 @@ const routs = createBrowserRouter([
             element: <ProductPage />,
           },
         ],
+      },
+      {
+        path: '/favorites',
+        element: <FavoritePage />,
+      },
+      {
+        path: '/cart',
+        element: <CartPage />,
       },
     ],
   },

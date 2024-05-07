@@ -4,38 +4,66 @@ import { useAppSelector } from '@/hooks';
 import ProductItem from '../ProductItem/ProductItem';
 import { useSearchParams } from 'react-router-dom';
 import Pagination from '../Pagination/Pagination';
-import { useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
+import { TProduct } from '../ProductItem/products';
+import { getSortProducts } from '@/helpers/getSortproducts';
 
 const sortParam = ['Newest', 'Oldest'];
-const itemsOnPage = ['10', '12', '14', '16'];
+const itemsOnPageArray = ['16', '20', '24', '28'];
 
-const Catalog = () => {
-  const [searchParams, setSearchParams] = useSearchParams('?page=1&perPage=10');
-  const phones = useAppSelector((state) => state.phones.phones);
-  const perPage = searchParams.get('perPage') || 10;
+interface ICatalogProps {
+  products: TProduct[];
+}
+
+const Catalog: FC<ICatalogProps> = ({ products }) => {
+  const [searchParams, setSearchParams] = useSearchParams('?page=1&perPage=16');
+  const perPage = searchParams.get('perPage') || '16';
   const page = searchParams.get('page') || 1;
+  const sort = searchParams.get('sort') || 'Newest';
   const firstItem = (+page - 1) * +perPage;
-  const lastItem = Math.min(+page * +perPage, phones.length);
-  const visibleItems = phones.slice(firstItem, lastItem);
+  const lastItem = Math.min(+page * +perPage, products.length);
+  const visibleItems = getSortProducts(sort, products.slice(firstItem, lastItem));
+
+  const handleSelectPerPage = (newValue: string) => {
+    searchParams.set('perPage', newValue);
+    setSearchParams(searchParams);
+  };
+
+  const handleSelectSort = (newValue: string) => {
+    searchParams.set('sort', newValue);
+    setSearchParams(searchParams);
+  };
 
   useEffect(() => {
-    setSearchParams(`?page=${page}&perPage=${perPage}`);
+    setSearchParams(`?page=${page}&perPage=${perPage}&sort=${sort}`);
   }, []);
 
   return (
     <div className="products">
       <div className="products__filter">
-        <SelectorComponent items={sortParam} placeholder="Sort by" width={187} />
-        <SelectorComponent items={itemsOnPage} placeholder="Items on page" width={187} />
+        <SelectorComponent
+          items={sortParam}
+          placeholder="Sort by"
+          width={187}
+          value={sort}
+          onChange={handleSelectSort}
+        />
+        <SelectorComponent
+          items={itemsOnPageArray}
+          placeholder="Items on page"
+          width={187}
+          value={perPage}
+          onChange={handleSelectPerPage}
+        />
       </div>
 
       <div className="products__items">
         {visibleItems.map((item) => (
-          <ProductItem productItem={item} />
+          <ProductItem productItem={item} key={item.id} />
         ))}
       </div>
 
-      <Pagination />
+      <Pagination products={products} />
     </div>
   );
 };

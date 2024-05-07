@@ -6,15 +6,16 @@ import Button from '@/components/ButtonComponent/Button';
 import IconComponent from '@/components/IconComponent';
 import '@/modules/shared/ProductItem/ProductItem.scss';
 import clsx from 'clsx';
+import { Link } from 'react-router-dom';
 
 interface IProductItemProps {
   productItem: TProduct;
 }
 
 const ProductItem: FC<IProductItemProps> = ({ productItem }) => {
-  const { name, screen, image, fullPrice, price, capacity, ram } = productItem;
+  const { name, screen, image, fullPrice, price, capacity, ram, category } = productItem;
   return (
-    <div className="product__wrapper">
+    <Link to={`/${category}/${productItem.itemId}`} className="product__wrapper" state={category}>
       <div className="product__container">
         <img src={image} alt="1" className="product__img" />
       </div>
@@ -71,7 +72,7 @@ const ProductItem: FC<IProductItemProps> = ({ productItem }) => {
           <IconComponent name="heart" height={16} width={16} />
         </Button>
       </div>
-    </div>
+    </Link>
   );
 };
 

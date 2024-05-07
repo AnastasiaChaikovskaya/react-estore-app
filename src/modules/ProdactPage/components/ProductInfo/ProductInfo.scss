@@ -1,0 +1,66 @@
+@import '../../../../utils/mixins';
+
+.product-info {
+  display: flex;
+  gap: 56px;
+  flex-direction: column;
+  padding-inline: 16px;
+
+  @include on-desktop {
+    flex-direction: row;
+    gap: 64px;
+  }
+
+  &__title {
+    color: #313237;
+  }
+
+  &__text {
+    color: #89939a;
+  }
+
+  @include on-tablet {
+    padding-inline: 0;
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-desktop {
+      width: 50%;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__tech {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-desktop {
+      width: 50%;
+    }
+  }
+
+  &__characteristic {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__specs {
+    display: flex;
+    justify-content: space-between;
+
+    &__title {
+      color: #89939a;
+    }
+  }
+}
