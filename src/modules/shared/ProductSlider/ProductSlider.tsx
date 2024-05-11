@@ -17,17 +17,17 @@ const WIDTH = 272 + 16;
 const ProductSlider: FC<IProductSliderProps> = ({ products, heading }) => {
   const [currentImg, setCurrentImg] = useState(0);
   const [currentActiveSlides, setCurrentActiveSlides] = useState(0);
-  const disableNext = currentImg === products.length - currentActiveSlides + 0.5;
+  const disableNext = currentImg === products.length - currentActiveSlides + 1;
   const disablePrev = currentImg === 0;
 
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleNextSlide = () => {
-    if (currentImg !== products.length - currentActiveSlides) {
+    if (currentImg !== products.length - currentActiveSlides + 1) {
       setCurrentImg(
-        currentImg + STEP < products.length - currentActiveSlides
+        currentImg + STEP < products.length - currentActiveSlides + 1
           ? currentImg + STEP
-          : products.length - currentActiveSlides + 0.5,
+          : products.length - currentActiveSlides + 1,
       );
     }
   };
@@ -39,11 +39,25 @@ const ProductSlider: FC<IProductSliderProps> = ({ products, heading }) => {
   };
 
   useEffect(() => {
-    if (containerRef && containerRef.current && products.length > 0) {
-      const { width } = containerRef.current.getBoundingClientRect();
-      setCurrentActiveSlides(Math.ceil(width / WIDTH));
-    }
-  }, [containerRef.current]);
+    const updateActiveSlides = () => {
+      if (containerRef.current && products.length > 0) {
+        const { width } = containerRef.current.getBoundingClientRect();
+        setCurrentActiveSlides(Math.ceil(width / WIDTH));
+      }
+    };
+
+    updateActiveSlides();
+
+    const handleResize = () => {
+      updateActiveSlides();
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [containerRef.current, products]);
 
   return (
     <div className="slider-product">

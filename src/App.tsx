@@ -28,7 +28,7 @@ const routs = createBrowserRouter([
           },
           {
             path: ':itemId',
-            element: <ProductPage />,
+            element: <ProductPage category="phones" />,
           },
         ],
       },
@@ -41,7 +41,7 @@ const routs = createBrowserRouter([
           },
           {
             path: ':itemId',
-            element: <ProductPage />,
+            element: <ProductPage category="tablets" />,
           },
         ],
       },
@@ -54,7 +54,7 @@ const routs = createBrowserRouter([
           },
           {
             path: ':itemId',
-            element: <ProductPage />,
+            element: <ProductPage category="accessories" />,
           },
         ],
       },

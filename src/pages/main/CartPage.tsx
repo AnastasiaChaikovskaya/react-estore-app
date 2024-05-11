@@ -1,24 +1,32 @@
 import React from 'react';
 import CartItem from '@/modules/CartPage/componets/CartItem/CartItem';
 import { TProduct } from '@/modules/shared/ProductItem/products';
-
-const item: TProduct = {
-  id: 155,
-  category: 'tablets',
-  itemId: 'apple-ipad-pro-11-2021-128gb-spacegray',
-  name: 'Apple iPad Pro 11 (2021) 128GB Space Gray',
-  capacity: '128GB',
-  fullPrice: 799,
-  price: 749,
-  color: 'spacegray',
-  image: 'img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp',
-  screen: "11' Liquid Retina",
-  ram: '8GB',
-  year: 2021,
-};
+import TitleProduct from '@/modules/shared/TitleProduct/TitleProduct';
+import { useAppSelector } from '@/hooks';
+import Button from '@/components/ButtonComponent/Button';
+import { useNavigate } from 'react-router-dom';
+import IconComponent from '@/components/IconComponent';
+import CartCatalog from '@/modules/CartPage/componets/CartCatalog/CartCatalog';
 
 const CartPage = () => {
-  return <CartItem item={item} />;
+  const cart = useAppSelector((state) => state.cart.cartProducts);
+  const navigate = useNavigate();
+  return (
+    <>
+      <Button
+        variant="link"
+        className="navigate-buttons__back"
+        iconLeft={<IconComponent name="arrow-left" height={16} width={16} />}
+        onClick={() => {
+          navigate('../');
+        }}
+      >
+        Back
+      </Button>
+      <TitleProduct title="Cart" quantity={cart.length} />
+      <CartCatalog />
+    </>
+  );
 };
 
 export default CartPage;

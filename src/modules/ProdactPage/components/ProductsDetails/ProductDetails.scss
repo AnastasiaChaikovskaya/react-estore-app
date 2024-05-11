@@ -53,6 +53,7 @@
     &--main-img {
       height: 274px;
       width: 274px;
+      object-fit: contain;
 
       @include on-tablet {
         height: 287px;
@@ -77,6 +78,8 @@
       &-imgs {
         width: 42px;
         height: 42px;
+        object-fit: contain;
+        cursor: pointer;
 
         @include on-tablet {
           width: 30px;

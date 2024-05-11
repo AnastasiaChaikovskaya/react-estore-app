@@ -6,23 +6,46 @@ import Text from '@/components/Text/Text';
 import { TProductDetails } from '@/modules/shared/ProductItem/products';
 import clsx from 'clsx';
 import '@/modules/ProdactPage/components/ProductsDetails/ProductDetails.scss';
-import { setCurrentProduct, setErrorCurrentProduct, setLoadingCurrentProduct } from '@/feature/currentProduct';
-import { useAppDispatch } from '@/hooks';
+import { useNavigate } from 'react-router-dom';
 
 interface IProductDetailsProps {
-  product: TProductDetails;
+  currentProduct: TProductDetails;
 }
 
-const ProductDetails: FC<IProductDetailsProps> = ({ product }) => {
-  const { name, color, capacityAvailable, capacity, colorsAvailable, images, priceDiscount, priceRegular } = product;
-  const [currentColor, setCurrentColor] = useState(color);
-  const [currentCapacity, setCurrentCapacity] = useState(capacity);
-  const dispatch = useAppDispatch();
+const ProductDetails: FC<IProductDetailsProps> = ({ currentProduct }) => {
+  const {
+    name,
+    color,
+    capacityAvailable,
+    capacity,
+    colorsAvailable,
+    images,
+    priceDiscount,
+    priceRegular,
+    screen,
+    ram,
+    resolution,
+    processor,
+    namespaceId,
+    category,
+  } = currentProduct;
+  const navigate = useNavigate();
+  const [mainImage, setMainImage] = useState(images[0]);
+
+  const handleChooseProduct = (color: string, nameSpaceId: string, capacity: string) => {
+    console.log(color, nameSpaceId, capacity);
+
+    const newProductId = `${nameSpaceId}-${capacity.toLowerCase()}-${color.toLowerCase()}`;
+    navigate(`/${category}/${newProductId}`);
+  };
+
+  const handleSelectImage = (img: string) => {
+    setMainImage(img);
+  };
 
   useEffect(() => {
-    setCurrentColor(color);
-    setCurrentCapacity(capacity);
-  }, [color, capacity]);
+    setMainImage(images[0]);
+  }, [images]);
 
   return (
     <div className="product-details">
@@ -32,11 +55,17 @@ const ProductDetails: FC<IProductDetailsProps> = ({ product }) => {
       <div className="product-details__wrapper">
         <div className="product-details__imgs">
           <div>
-            <img src={`../${images[0]}`} alt="main image" className="product-details__imgs--main-img" />
+            <img src={`/${mainImage}`} alt="main image" className="product-details__imgs--main-img" />
           </div>
           <div className="product-details__imgs--dop">
             {images.map((img) => (
-              <img key={img} src={`../${img}`} className="product-details__imgs--dop-imgs" alt="product img" />
+              <img
+                key={img}
+                src={`/${img}`}
+                className="product-details__imgs--dop-imgs"
+                alt="product img"
+                onClick={() => handleSelectImage(img)}
+              />
             ))}
           </div>
         </div>
@@ -46,14 +75,15 @@ const ProductDetails: FC<IProductDetailsProps> = ({ product }) => {
               Available colors
             </Text>
             <div className="info__chose">
-              {colorsAvailable.map((color) => (
+              {colorsAvailable.map((currentColor) => (
                 <Button
-                  key={color}
+                  key={currentColor}
                   variant="circle"
                   size="md"
-                  style={{ backgroundColor: color }}
+                  style={{ backgroundColor: currentColor }}
+                  onClick={() => handleChooseProduct(currentColor, namespaceId, capacity)}
                   className={clsx({ 'button-color--active': currentColor === color })}
-                ></Button>
+                />
               ))}
             </div>
           </div>
@@ -65,15 +95,16 @@ const ProductDetails: FC<IProductDetailsProps> = ({ product }) => {
               Select capacity
             </Text>
             <div className="info__chose">
-              {capacityAvailable.map((capacity) => (
+              {capacityAvailable.map((currentCapacity) => (
                 <Button
                   variant="default"
                   size="sm"
-                  key={capacity}
-                  className={clsx({ 'button-capacity--active': capacity === currentCapacity })}
+                  key={currentCapacity}
+                  className={clsx({ 'button-capacity--active': currentCapacity === capacity })}
+                  onClick={() => handleChooseProduct(color, namespaceId, currentCapacity)}
                 >
                   <Text tag="span" size="sm" align="center">
-                    {capacity}
+                    {currentCapacity}
                   </Text>
                 </Button>
               ))}
@@ -84,7 +115,7 @@ const ProductDetails: FC<IProductDetailsProps> = ({ product }) => {
 
           <div className="info__buy">
             <div className="info__price">
-              {product?.priceDiscount && (
+              {priceDiscount && (
                 <Heading tag="h2" size="2" weight="bold" className="inf0__price--discount">
                   {`$${priceDiscount}`}
                 </Heading>
@@ -113,7 +144,7 @@ const ProductDetails: FC<IProductDetailsProps> = ({ product }) => {
                 Screen
               </Text>
               <Text tag="p" size="sm" weight="semi-bold" align="left">
-                {product?.screen}
+                {screen}
               </Text>
             </div>
 
@@ -122,7 +153,7 @@ const ProductDetails: FC<IProductDetailsProps> = ({ product }) => {
                 Resolution
               </Text>
               <Text tag="p" size="sm" weight="semi-bold" align="left">
-                {product?.resolution}
+                {resolution}
               </Text>
             </div>
 
@@ -131,7 +162,7 @@ const ProductDetails: FC<IProductDetailsProps> = ({ product }) => {
                 Processor
               </Text>
               <Text tag="p" size="sm" weight="semi-bold" align="left">
-                {product?.processor}
+                {processor}
               </Text>
             </div>
 
@@ -140,7 +171,7 @@ const ProductDetails: FC<IProductDetailsProps> = ({ product }) => {
                 RAM
               </Text>
               <Text tag="p" size="sm" weight="semi-bold" align="left">
-                {product?.ram}
+                {ram}
               </Text>
             </div>
           </div>

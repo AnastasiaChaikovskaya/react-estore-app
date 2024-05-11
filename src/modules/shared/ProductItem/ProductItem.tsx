@@ -7,6 +7,10 @@ import IconComponent from '@/components/IconComponent';
 import '@/modules/shared/ProductItem/ProductItem.scss';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '@/hooks';
+import { addFavorite, removeFavorite } from '@/feature/favouritesReducer';
+import { addToCart, removeFromCart } from '@/feature/cartReducer';
+import { addAlsoLike } from '@/feature/alsoLikeReducer';
 
 interface IProductItemProps {
   productItem: TProduct;
@@ -14,11 +18,41 @@ interface IProductItemProps {
 
 const ProductItem: FC<IProductItemProps> = ({ productItem }) => {
   const { name, screen, image, fullPrice, price, capacity, ram, category } = productItem;
+  const dispatch = useAppDispatch();
+  const favorites = useAppSelector((state) => state.favorites.favorites);
+  const cart = useAppSelector((state) => state.cart.cartProducts);
+  const isProductInFavorite = favorites.find((item) => item.itemId === productItem.itemId);
+  const isProductInCart = cart.find((item) => item.itemId === productItem.itemId);
+
+  const handleAddToAlsoLike = (product: TProduct) => {
+    dispatch(addAlsoLike(product));
+  };
+
+  const handleAddToCart = (product: TProduct) => {
+    if (!isProductInCart) {
+      dispatch(addToCart(product));
+    } else {
+      dispatch(removeFromCart(product.itemId));
+    }
+  };
+
+  const handleAddToFavorite = (product: TProduct) => {
+    if (!isProductInFavorite) {
+      dispatch(addFavorite(product));
+    } else {
+      dispatch(removeFavorite(product.itemId));
+    }
+  };
+
   return (
-    <Link to={`/${category}/${productItem.itemId}`} className="product__wrapper" state={category}>
-      <div className="product__container">
-        <img src={image} alt="1" className="product__img" />
-      </div>
+    <div className="product__wrapper">
+      <Link
+        to={`/${category}/${productItem.itemId}`}
+        onClick={() => handleAddToAlsoLike(productItem)}
+        className="product__container"
+      >
+        <img src={`/${image}`} alt="1" className="product__img" />
+      </Link>
       <Text tag="p" size="base" weight="medium" className="product__name">
         {name}
       </Text>
@@ -65,14 +99,29 @@ const ProductItem: FC<IProductItemProps> = ({ productItem }) => {
         </div>
       </div>
       <div className="product__button">
-        <Button variant="primary" size="lg">
+        <Button
+          variant="primary"
+          size="lg"
+          className={clsx({ 'button-cart--active': isProductInCart })}
+          onClick={() => handleAddToCart(productItem)}
+        >
           Add to cart
         </Button>
-        <Button variant="default" size="md">
-          <IconComponent name="heart" height={16} width={16} />
+        <Button
+          variant="default"
+          size="md"
+          className={clsx({ 'button-heart--active': isProductInFavorite })}
+          onClick={() => handleAddToFavorite(productItem)}
+        >
+          <IconComponent
+            name={isProductInFavorite ? 'heart-filled' : 'heart'}
+            color={isProductInFavorite && '#eb5757'}
+            height={16}
+            width={16}
+          />
         </Button>
       </div>
-    </Link>
+    </div>
   );
 };
 

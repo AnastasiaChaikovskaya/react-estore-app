@@ -63,7 +63,7 @@ const Catalog: FC<ICatalogProps> = ({ products }) => {
         ))}
       </div>
 
-      <Pagination products={products} />
+      {products.length > +perPage && <Pagination products={products} />}
     </div>
   );
 };

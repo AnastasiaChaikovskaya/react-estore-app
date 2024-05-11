@@ -3,8 +3,12 @@ import MenuDesktop from '@/modules/shared/Header/components/MenuDesktop';
 import IconComponent from '@/components/IconComponent';
 import HeaderLogo from '@/assets/icons/header-logo.svg?react';
 import { NavLink } from 'react-router-dom';
+import { useAppSelector } from '@/hooks';
+import Text from '@/components/Text/Text';
 
 export const Header = () => {
+  const favorites = useAppSelector((state) => state.favorites.favorites);
+  const cart = useAppSelector((state) => state.cart.cartProducts);
   return (
     <>
       <header className="header">
@@ -25,9 +29,23 @@ export const Header = () => {
             <div className="header__right">
               <NavLink to={'/favorites'} className="header__right--fav">
                 <IconComponent name="heart" width={16} height={16} />
+                {favorites.length !== 0 && (
+                  <div className="header__right--circle">
+                    <Text tag="span" weight="medium" style={{ fontSize: '9px' }} className="header__right--quantity">
+                      {favorites.length}
+                    </Text>
+                  </div>
+                )}
               </NavLink>
               <NavLink to={'/cart'} className="header__right--cart">
                 <IconComponent name="shop-cart" width={16} height={16} />
+                {cart.length !== 0 && (
+                  <div className="header__right--circle">
+                    <Text tag="span" weight="medium" style={{ fontSize: '9px' }} className="header__right--quantity">
+                      {cart.length}
+                    </Text>
+                  </div>
+                )}
               </NavLink>
             </div>
           </div>

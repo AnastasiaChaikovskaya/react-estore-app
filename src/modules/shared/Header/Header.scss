@@ -44,9 +44,26 @@
       display: none;
     }
 
+    &--circle {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background-color: #eb5757;
+      top: -5px;
+      right: 5px;
+    }
+
+    &--quantity {
+      color: #ffffff;
+    }
+
     &--cart {
       height: 14px;
-      padding-left: 16px;
+      padding-inline: 16px;
       position: relative;
       color: $main-color-text;
 

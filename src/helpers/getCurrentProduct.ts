@@ -1,4 +1,6 @@
-export const getResponse = async (category: 'phones' | 'tablets' | 'accessories') => {
+import { TProductDetails } from '@/modules/shared/ProductItem/products';
+
+export const getResponse = async (category: 'phones' | 'tablets' | 'accessories', productId: string) => {
   let url = '/api/phones.json';
 
   if (category === 'phones') {
@@ -15,5 +17,9 @@ export const getResponse = async (category: 'phones' | 'tablets' | 'accessories'
 
   const response = await fetch(url);
 
-  return response.json();
+  const products: TProductDetails[] = await response.json();
+
+  const currentProduct = products.find((item) => item.id === productId);
+
+  return currentProduct;
 };
