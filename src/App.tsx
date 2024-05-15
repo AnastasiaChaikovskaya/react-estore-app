@@ -9,6 +9,7 @@ import { store } from '@/store';
 import { Provider } from 'react-redux';
 import FavoritePage from './pages/main/FavoritePage';
 import CartPage from './pages/main/CartPage';
+import { HashRouter } from 'react-router-dom';
 
 const routs = createBrowserRouter([
   {

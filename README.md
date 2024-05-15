@@ -46,7 +46,7 @@ Then clone and install dependencies:
 Finally, run the development server from the root of the project:
 
 ```bash
-  npm install -g pnpm
+  pnpm dev
 ```
 
 That`s it 🔥.
