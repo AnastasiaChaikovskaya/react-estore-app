@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MenuDesktop from '@/modules/shared/Header/components/MenuDesktop';
 import IconComponent from '@/components/IconComponent';
 import HeaderLogo from '@/assets/icons/header-logo.svg?react';
 import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '@/hooks';
 import Text from '@/components/Text/Text';
+import MenuMobile from './components/MenuMobile/MenuMobile';
 
 export const Header = () => {
   const favorites = useAppSelector((state) => state.favorites.favorites);
   const cart = useAppSelector((state) => state.cart.cartProducts);
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
+
+  const handleOpenMobileMenu = () => {
+    setIsOpenMenu(!isOpenMenu);
+
+    document.body.classList.toggle('no-scroll', !isOpenMenu);
+  };
+
   return (
     <>
       <header className="header">
@@ -19,11 +28,12 @@ export const Header = () => {
                 <HeaderLogo color="black" width={80} height={26} />
               </a>
 
+              <MenuMobile isOpen={isOpenMenu} handleOpen={handleOpenMobileMenu} />
               <MenuDesktop />
             </div>
 
-            <div className="header__icon">
-              <IconComponent name="menu-icon" width={14} height={9} />
+            <div className="header__icon" onClick={handleOpenMobileMenu}>
+              <IconComponent name={isOpenMenu ? 'close-icon' : 'menu-icon'} width={16} height={16} />
             </div>
 
             <div className="header__right">

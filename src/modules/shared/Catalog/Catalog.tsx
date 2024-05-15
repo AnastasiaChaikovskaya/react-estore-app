@@ -1,10 +1,9 @@
 import SelectorComponent from '@/components/SelectorComponent/SlectorComponent';
 import '@/modules/shared/Catalog/Catalog.scss';
-import { useAppSelector } from '@/hooks';
 import ProductItem from '../ProductItem/ProductItem';
 import { useSearchParams } from 'react-router-dom';
 import Pagination from '../Pagination/Pagination';
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect } from 'react';
 import { TProduct } from '../ProductItem/products';
 import { getSortProducts } from '@/helpers/getSortproducts';
 

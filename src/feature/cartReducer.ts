@@ -15,15 +15,15 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState: initCartStore,
   reducers: {
-    addToCart: (store, action: PayloadAction<TProduct>) => {
+    addToCart: (state, action: PayloadAction<TProduct>) => {
       const amount = action.payload.price ? action.payload.price : action.payload.fullPrice;
-      store.cartProducts.push({
+      state.cartProducts.push({
         ...action.payload,
         count: 1,
         totalAmount: amount,
       });
 
-      localStorage.setItem('cart', JSON.stringify(store.cartProducts));
+      localStorage.setItem('cart', JSON.stringify(state.cartProducts));
     },
 
     incrementCount: (state, action: PayloadAction<TCartProduct>) => {
@@ -36,6 +36,8 @@ const cartSlice = createSlice({
 
         return product;
       });
+
+      localStorage.setItem('cart', JSON.stringify(state.cartProducts));
     },
 
     decrementCount: (state, action: PayloadAction<TCartProduct>) => {
@@ -48,12 +50,14 @@ const cartSlice = createSlice({
 
         return product;
       });
+
+      localStorage.setItem('cart', JSON.stringify(state.cartProducts));
     },
 
-    removeFromCart: (store, action: PayloadAction<string>) => {
-      store.cartProducts = store.cartProducts.filter((item) => item.itemId !== action.payload);
+    removeFromCart: (state, action: PayloadAction<string>) => {
+      state.cartProducts = state.cartProducts.filter((item) => item.itemId !== action.payload);
 
-      localStorage.setItem('cart', JSON.stringify(store.cartProducts));
+      localStorage.setItem('cart', JSON.stringify(state.cartProducts));
     },
   },
 });

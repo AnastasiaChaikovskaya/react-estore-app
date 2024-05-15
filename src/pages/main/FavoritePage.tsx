@@ -8,7 +8,7 @@ const FavoritePage = () => {
   return (
     <>
       <TitleProduct title="Favorites" quantity={favorites.length} />
-      <Catalog products={favorites} />;
+      <Catalog products={favorites} />
     </>
   );
 };

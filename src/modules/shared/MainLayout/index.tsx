@@ -30,8 +30,8 @@ const MainLayout = () => {
   return (
     <>
       <Header />
-      <div className="container">
-        <div className="main">
+      <div className="main">
+        <div className="container">
           <div className="main__content">
             <Outlet />
           </div>
