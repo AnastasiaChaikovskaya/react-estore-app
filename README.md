@@ -1,30 +1,22 @@
-# React + TypeScript + Vite
+# Phone catalog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![<vite>](https://img.shields.io/badge/<Vite-#B0B5ED>?style=for-the-badge&logo=Vite&logoColor=wight)
 
-Currently, two official plugins are available:
+## ⚡️ Quick start
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+First [download](https://nodejs.org/en/download) and install **Node.** Version `18.17.1` or higher.
 
-## Expanding the ESLint configuration
+Now you need to install **pnpm** package manager. VErsion `8.9.2` (or higher). This project using **pnpm** as a package
+manager and utilize its monorepo feature to manage the own packages. Run the following command in your terminal.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+`npm install -g pnpm`
 
-- Configure the top-level `parserOptions` property like this:
+Then install dependencies:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+`pnpm install`
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Finally, run the development server from the root of the project:
+
+`pnpm dev`
+
+That`s it 🔥.
