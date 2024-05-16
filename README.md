@@ -4,6 +4,8 @@ Welcome to the Phone Catalog Project! This project is a beautifully crafted appl
 phones. It's built with modern technologies like Vite, React, React Router, Redux Toolkit, and PNPM to ensure a smooth
 development experience and high performance.
 
+[Phone Catalog](https://bejewelled-douhua-0c2b42.netlify.app/);
+
 ## Features
 
 - **Interactive UI**: Explore a visually stunning catalog of phones with an intuitive user interface.
