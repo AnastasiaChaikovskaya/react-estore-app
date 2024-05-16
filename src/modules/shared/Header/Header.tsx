@@ -27,7 +27,7 @@ export const Header = () => {
         <div className="container">
           <div className="header__top-bar">
             <div className="header__container">
-              <NavLink to={PUBLIC_ROUTS.HOME}>
+              <NavLink to={PUBLIC_ROUTS.HOME} onClick={scrollToTop}>
                 <HeaderLogo color="black" width={80} height={26} />
               </NavLink>
 
