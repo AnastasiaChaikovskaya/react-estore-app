@@ -7,6 +7,7 @@ import { useAppSelector } from '@/hooks';
 import Text from '@/components/Text/Text';
 import MenuMobile from './components/MenuMobile/MenuMobile';
 import { scrollToTop } from '@/helpers/scrollToTop';
+import { PUBLIC_ROUTS } from '@/contstants/routs';
 
 export const Header = () => {
   const favorites = useAppSelector((state) => state.favorites.favorites);
@@ -26,9 +27,9 @@ export const Header = () => {
         <div className="container">
           <div className="header__top-bar">
             <div className="header__container">
-              <a href="h">
+              <NavLink to={PUBLIC_ROUTS.HOME}>
                 <HeaderLogo color="black" width={80} height={26} />
-              </a>
+              </NavLink>
 
               <MenuMobile isOpen={isOpenMenu} handleOpen={handleOpenMobileMenu} />
               <MenuDesktop />
