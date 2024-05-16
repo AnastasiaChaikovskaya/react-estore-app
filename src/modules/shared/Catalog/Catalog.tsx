@@ -22,10 +22,12 @@ const Catalog: FC<ICatalogProps> = ({ products }) => {
   const sort = searchParams.get('sort') || 'Newest';
   const firstItem = (+page - 1) * +perPage;
   const lastItem = Math.min(+page * +perPage, products.length);
-  const visibleItems = getSortProducts(sort, products.slice(firstItem, lastItem));
+  const sortProducts = getSortProducts(sort, products);
+  const visibleItems = sortProducts.slice(firstItem, lastItem);
 
   const handleSelectPerPage = (newValue: string) => {
     searchParams.set('perPage', newValue);
+    searchParams.set('page', '1');
     setSearchParams(searchParams);
   };
 
@@ -36,7 +38,7 @@ const Catalog: FC<ICatalogProps> = ({ products }) => {
 
   useEffect(() => {
     setSearchParams(`?page=${page}&perPage=${perPage}&sort=${sort}`);
-  }, []);
+  }, [page, perPage, sort]);
 
   return visibleItems.length !== 0 ? (
     <div className="products">
