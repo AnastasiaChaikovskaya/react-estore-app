@@ -27,6 +27,10 @@
 
   &__nav-text {
     color: #89939a;
+
+    &:hover {
+      color: #313237;
+    }
   }
 
   &__back {

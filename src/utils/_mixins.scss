@@ -36,6 +36,7 @@
 @mixin content-pudding-inline {
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   @include on-tablet {
     padding-inline: 24px;

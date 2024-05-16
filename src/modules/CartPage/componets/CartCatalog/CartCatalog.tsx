@@ -5,12 +5,13 @@ import Text from '@/components/Text/Text';
 import { useAppSelector } from '@/hooks';
 import CartItem from '../CartItem/CartItem';
 import '@/modules/CartPage/componets/CartCatalog/CartCatalog.scss';
+import EmptyPage from '@/modules/shared/EmptyPage/EmptyPage';
 
 const CartCatalog = () => {
   const cart = useAppSelector((state) => state.cart.cartProducts);
   const total = cart.reduce((sum, item) => sum + item.totalAmount, 0);
   const totalCount = cart.reduce((sum, item) => sum + item.count, 0);
-  return (
+  return cart.length !== 0 ? (
     <div className="cart">
       <div className="cart__products">
         {cart.map((item) => (
@@ -34,6 +35,8 @@ const CartCatalog = () => {
         </Button>
       </div>
     </div>
+  ) : (
+    <EmptyPage />
   );
 };
 

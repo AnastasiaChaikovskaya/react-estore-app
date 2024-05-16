@@ -184,6 +184,10 @@
     letter-spacing: 4%;
     text-transform: uppercase;
     color: $main-nonactive-page;
+
+    &:hover {
+      color: #313237;
+    }
   }
 
   &__item {

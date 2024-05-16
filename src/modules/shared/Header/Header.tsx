@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '@/hooks';
 import Text from '@/components/Text/Text';
 import MenuMobile from './components/MenuMobile/MenuMobile';
+import { scrollToTop } from '@/helpers/scrollToTop';
 
 export const Header = () => {
   const favorites = useAppSelector((state) => state.favorites.favorites);
@@ -14,6 +15,7 @@ export const Header = () => {
 
   const handleOpenMobileMenu = () => {
     setIsOpenMenu(!isOpenMenu);
+    scrollToTop();
 
     document.body.classList.toggle('no-scroll', !isOpenMenu);
   };

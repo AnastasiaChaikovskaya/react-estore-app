@@ -1,5 +1,4 @@
-import { NavLink } from 'react-router-dom';
-import { FOOTER__LINKS, IFooterLink } from '../constants';
+import { IFooterLink } from '../constants';
 import { FC } from 'react';
 import Text from '@/components/Text/Text';
 
@@ -10,7 +9,7 @@ interface IFooterMenuProps {
 const FooterMenuItem: FC<IFooterMenuProps> = ({ item }) => {
   return (
     <li className="footer__nav-item">
-      <a href={item.link} className="footer__nav-link">
+      <a href={item.link} className="footer__nav-link" target="_blank">
         <Text tag="p" size="sm" align="left" transform="uppercase" className="footer__nav-text">
           {item.label}
         </Text>

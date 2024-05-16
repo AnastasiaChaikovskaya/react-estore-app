@@ -6,6 +6,7 @@ import Pagination from '../Pagination/Pagination';
 import { FC, useEffect } from 'react';
 import { TProduct } from '../ProductItem/products';
 import { getSortProducts } from '@/helpers/getSortproducts';
+import EmptyPage from '../EmptyPage/EmptyPage';
 
 const sortParam = ['Newest', 'Oldest'];
 const itemsOnPageArray = ['16', '20', '24', '28'];
@@ -37,7 +38,7 @@ const Catalog: FC<ICatalogProps> = ({ products }) => {
     setSearchParams(`?page=${page}&perPage=${perPage}&sort=${sort}`);
   }, []);
 
-  return (
+  return visibleItems.length !== 0 ? (
     <div className="products">
       <div className="products__filter">
         <SelectorComponent
@@ -64,6 +65,8 @@ const Catalog: FC<ICatalogProps> = ({ products }) => {
 
       {products.length > +perPage && <Pagination products={products} />}
     </div>
+  ) : (
+    <EmptyPage />
   );
 };
 

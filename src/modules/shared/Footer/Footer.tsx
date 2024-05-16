@@ -6,12 +6,13 @@ import Text from '@/components/Text/Text';
 import Button from '@/components/ButtonComponent/Button';
 import IconComponent from '@/components/IconComponent';
 import '@/modules/shared/Footer/Footer.scss';
+import { scrollToTop } from '@/helpers/scrollToTop';
 
 const Footer = () => {
   return (
     <div className="container">
       <div className="footer">
-        <NavLink to={'/'}>
+        <NavLink to={'/'} onClick={scrollToTop}>
           <HeaderLogo width={89} height={30} color="black" />
         </NavLink>
 
@@ -23,7 +24,7 @@ const Footer = () => {
           <Text tag="p" size="sm" align="left" className="footer__back-text">
             Back to top
           </Text>
-          <Button variant="default" size="sm">
+          <Button variant="default" size="sm" onClick={scrollToTop}>
             <IconComponent name="arrow-up" height={16} width={16} />
           </Button>
         </div>

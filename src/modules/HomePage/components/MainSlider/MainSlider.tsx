@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import '@/modules/HomePage/components/MainSlider/MainSlider.scss';
 import Button from '@/components/ButtonComponent/Button';
 import IconComponent from '@/components/IconComponent';
@@ -34,6 +34,14 @@ const MainSlider: FC<ISliderProps> = ({ imgURL }) => {
     trackMouse: true,
     preventScrollOnSwipe: true,
   });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImg((prevIndex) => (prevIndex === imgURL.length - 1 ? 0 : prevIndex + 1));
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="main__slider">

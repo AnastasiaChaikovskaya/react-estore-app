@@ -6,6 +6,10 @@ import Accessories from '@/assets/categories/accesories.png';
 import Tablets from '@/assets/categories/tablets.png';
 import Phones from '@/assets/categories/phones.png';
 import '@/modules/HomePage/components/Categories/Categories.scss';
+import { NavLink } from 'react-router-dom';
+import { MENU_LINKS } from '@/modules/shared/Header/constants';
+import { PUBLIC_ROUTS } from '@/contstants/routs';
+import { scrollToTop } from '@/helpers/scrollToTop';
 
 const Categories = () => {
   const [quantityOfPhones, setQuantityOfPhones] = useState(0);
@@ -38,7 +42,7 @@ const Categories = () => {
         Shop by category
       </Heading>
       <div className="categories__wrapper">
-        <div className="category">
+        <NavLink to={PUBLIC_ROUTS.PHONES} className="category" onClick={scrollToTop}>
           <div className="category__bg-phones">
             <img src={Phones} alt="/" className="category__img" />
           </div>
@@ -50,9 +54,9 @@ const Categories = () => {
               {`${quantityOfPhones} models`}
             </Text>
           </div>
-        </div>
+        </NavLink>
 
-        <div className="category">
+        <NavLink to={PUBLIC_ROUTS.TABLETS} className="category" onClick={scrollToTop}>
           <div className="category__bg-tablets">
             <img src={Tablets} alt="/" className="category__img" />
           </div>
@@ -64,9 +68,9 @@ const Categories = () => {
               {`${quantityOfTablets} models`}
             </Text>
           </div>
-        </div>
+        </NavLink>
 
-        <div className="category">
+        <NavLink to={PUBLIC_ROUTS.ACCESSORIES} className="category" onClick={scrollToTop}>
           <div className="category__bg-accessories">
             <img src={Accessories} alt="/" className="category__img" />
           </div>
@@ -78,7 +82,7 @@ const Categories = () => {
               {`${quantityOfAccessories} models`}
             </Text>
           </div>
-        </div>
+        </NavLink>
       </div>
     </div>
   );
