@@ -38,7 +38,7 @@ manager and utilize its monorepo feature to manage the own packages. Run the fol
 Then clone and install dependencies:
 
 ```bash
-  git clone https://github.com/your-username/phone-catalog.git
+  git clone https://github.com/AnastasiaChaikovskaya/react-estore-app.git
 ```
 
 ```bash
